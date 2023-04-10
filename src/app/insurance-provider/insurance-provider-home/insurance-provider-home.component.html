@@ -1,0 +1,164 @@
+<mat-card>
+  <section>
+    <!-- #docregion toolbar-simple -->
+    <h4 class="title">SEARCH</h4>
+
+    <!-- #enddocregion toolbar-simple -->
+
+    <div class="flex-container" [formGroup]="form">
+      <mat-form-field class="flex-item">
+        <mat-label>Policy ID</mat-label>
+        <input matInput formControlName="PolicyId" />
+        <mat-icon matPrefix>policy_outlined</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="flex-item">
+        <mat-label>Member ID</mat-label>
+        <input matInput formControlName="MemberId" />
+        <mat-icon matPrefix>card_membership_outlined </mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="flex-item">
+        <mat-label>Customer Name</mat-label>
+        <input matInput formControlName="CustomerName" />
+        <mat-icon matPrefix>person_search_outlined</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="flex-item">
+        <mat-label>Customer Mobile Number</mat-label>
+        <input matInput maxlength="10" formControlName="MobileNumber" />
+        <mat-icon matPrefix>call</mat-icon>
+      </mat-form-field>
+      <mat-form-field class="flex-item">
+        <mat-label>Order ID</mat-label>
+        <input matInput formControlName="OrderID" />
+        <mat-icon matPrefix>view_list_outlined</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="flex-item">
+        <mat-label>Enter Date Between</mat-label>
+        <mat-date-range-input [rangePicker]="picker">
+          <input
+            matStartDate
+            placeholder="Start date"
+            formControlName="StartDate"
+          />
+          <input matEndDate placeholder="End date" formControlName="EndDate" />
+        </mat-date-range-input>
+        <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matPrefix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker></mat-date-range-picker>
+      </mat-form-field>
+    </div>
+    <div class="flex-container">
+      <div class="bottom-pane">
+        <button mat-raised-button color="primary">Search</button>
+        <button mat-raised-button extended (click)="reset()">Clear</button>
+      </div>
+    </div>
+  </section>
+</mat-card>
+<div style="height:30px"></div>
+
+<mat-card>
+  <section>
+    <div class="flex-container" style="justify-content:flex-end">
+      <button mat-raised-button color="primary" (click)="downloadCsv()">
+        Export
+      </button>
+    </div>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" matSort>
+        <!-- ID Column -->
+        <ng-container matColumnDef="PolicyId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Policy ID</th>
+          <td mat-cell *matCellDef="let row">{{ row.PolicyId }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="MemberId">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Member ID</th>
+          <td mat-cell *matCellDef="let row">{{ row.MemberId }}</td>
+        </ng-container>
+        <ng-container matColumnDef="CustomerName">
+          <th mat-header-cell *matHeaderCellDef>Customer Name</th>
+          <td mat-cell *matCellDef="let row">{{ row.CustomerName }}</td>
+        </ng-container>
+        <ng-container matColumnDef="CustomerNo">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Customer No</th>
+          <td mat-cell *matCellDef="let row">{{ row.CustomerNo }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Gender">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Gender</th>
+          <td mat-cell *matCellDef="let row">{{ row.Gender }}</td>
+        </ng-container>
+        <ng-container matColumnDef="DOB">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            Date of Birth
+          </th>
+          <td mat-cell *matCellDef="let row">{{ row.DOB }}</td>
+        </ng-container>
+        <ng-container matColumnDef="Age">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Age</th>
+          <td mat-cell *matCellDef="let row">{{ row.Age }}</td>
+        </ng-container>
+        <ng-container matColumnDef="Address">
+          <th mat-header-cell *matHeaderCellDef>Address</th>
+          <td mat-cell *matCellDef="let row">{{ row.Address }}</td>
+        </ng-container>
+        <ng-container matColumnDef="State">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>State</th>
+          <td mat-cell *matCellDef="let row">{{ row.State }}</td>
+        </ng-container>
+        <ng-container matColumnDef="City">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>City</th>
+          <td mat-cell *matCellDef="let row">{{ row.City }}</td>
+        </ng-container>
+        <ng-container matColumnDef="Pincode">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Pincode</th>
+          <td mat-cell *matCellDef="let row">{{ row.Pincode }}</td>
+        </ng-container>
+        <ng-container matColumnDef="AgentName">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Agent Name</th>
+          <td mat-cell *matCellDef="let row">{{ row.AgentName }}</td>
+        </ng-container>
+        <ng-container matColumnDef="AgentCode">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Agent Code</th>
+          <td mat-cell *matCellDef="let row">{{ row.AgentCode }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="AgentNumber">
+          <th mat-header-cell *matHeaderCellDef>Agent No</th>
+          <td mat-cell *matCellDef="let row">{{ row.AgentNumber }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Reports">
+          <th mat-header-cell *matHeaderCellDef>Reports</th>
+          <td mat-cell *matCellDef="let row">
+            <mat-icon
+              matPrefix
+              class="pointer"
+              #tooltip="matTooltip"
+              matTooltip="Download Report"
+              matTooltipPosition="left"
+              (click)="downloadCsv()"
+              >sim_card_download</mat-icon
+            >
+          </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+        <!-- Row shown when there is no matching data. -->
+        <tr class="mat-row" *matNoDataRow>
+          <td class="mat-cell" colspan="4">No data matching the filter</td>
+        </tr>
+      </table>
+
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page of dataSource.data"
+      ></mat-paginator>
+    </div>
+  </section>
+</mat-card>

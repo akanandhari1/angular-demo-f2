@@ -1,0 +1,22 @@
+<h4 mat-dialog-title class="title">No Response</h4>
+<mat-dialog-content>
+  <div class="flex-container">
+    <div class="flex-item">
+      <mat-form-field class="flex-item">
+        <mat-label>Reason</mat-label>
+        <mat-select [(ngModel)]="appointments.status">
+          <mat-option [value]="'Ringing but No Response'">
+            Ringing but No Response
+          </mat-option>
+          <mat-option [value]="' Wrong Number'"> Wrong Number </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+</mat-dialog-content>
+<div mat-dialog-actions align="end" class="float-right">
+  <button mat-button mat-raised-button color="primary" (click)="noResponse()">
+    Save
+  </button>
+  <button mat-button color="primary" [mat-dialog-close]>Close</button>
+</div>

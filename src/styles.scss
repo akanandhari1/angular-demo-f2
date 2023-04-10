@@ -1,0 +1,357 @@
+body {
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  margin: 0;
+  padding: 15px;
+}
+.mat-icon {
+  color: #673ab7;
+  position: relative;
+  bottom: -2px;
+}
+.mat-tab-label {
+  margin: 0px 5px !important;
+}
+.mat-select-panel-wrap {
+  margin-top: 30px;
+}
+.m-0 {
+  margin: 0px;
+}
+ngx-mat-timepicker-toggle {
+  order: 1 !important;
+  display: none;
+}
+ngx-mat-timepicker-toggle > .mat-icon-button {
+  width: 24px !important;
+}
+.ngx-mat-timepicker__control--first {
+  order: 2 !important;
+}
+.ngx-mat-timepicker__control--second {
+  order: 3 !important;
+}
+.ngx-mat-timepicker__control--third {
+  order: 4 !important;
+}
+.ngx-mat-timepicker__control--forth {
+  order: 5 !important;
+}
+.title {
+  font-size: 16px;
+  font-weight: 500;
+  border-left: 4px solid #9233ff;
+  color: #222;
+  line-height: 20px;
+  height: 20px;
+  text-transform: uppercase;
+  padding: 2px 0 2px 10px;
+  margin-top: 0.5rem;
+}
+.pointer {
+  cursor: pointer;
+}
+.mat-radio-outer-circle,
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: #673ab7;
+}
+.space {
+  height: 16px;
+}
+.mat-radio-inner-circle,
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: #673ab7;
+}
+// .cdk-overlay-pane {
+//   width: 90vw;
+//   height: 90vh;
+// }
+.mat-dialog-container {
+  padding: 15px;
+}
+.mat-datepicker-toggle-default-icon {
+  color: #673ab7;
+  font-size: 20px;
+  position: relative;
+  bottom: 3px;
+  margin-right: 10px;
+}
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+}
+.float-right {
+  float: right;
+  margin-right: 10px;
+}
+.highlight:hover {
+  background-color: rgb(227, 227, 231);
+}
+
+.failure-snackbar {
+  color: #f44336;
+  background: white;
+  font-size: 12px;
+}
+.success-snackbar {
+  color: green;
+  background: white;
+  font-size: 12px;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+mat-hint {
+  margin-left: 24px;
+}
+.customer {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0px 20px;
+  top: 4px;
+  position: relative;
+  text-transform: uppercase;
+}
+.customer > mat-icon {
+  font-size: 16px;
+  width: 16px;
+}
+.table-responsive {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  font-family: 'Roboto', 'Helvetica Neue', sans-serif;
+  margin-bottom: 1rem;
+  font-size: 12px;
+  background-color: transparent;
+}
+
+.table {
+  border-collapse: collapse;
+}
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+.mat-header-cell {
+  font-weight: bold;
+  border-bottom: 2px solid black !important;
+}
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0.25rem;
+}
+.mat-date-range-input-separator {
+  margin-right: 5px !important;
+}
+.flex-item {
+  margin: 10px;
+}
+.flex-item-big {
+  margin: 10px;
+}
+.flex-end {
+  justify-content: flex-end;
+}
+.table td,
+.table th {
+  padding: 0.75rem;
+  vertical-align: top;
+}
+th {
+  text-align: inherit;
+}
+.flex-item-6 {
+  width: 45%;
+  margin: 10px;
+}
+
+.placeholder {
+  text-align: center;
+  padding: 10% 10px 10px 10px;
+  cursor: pointer;
+  user-select: none;
+
+  .placeholder-label,
+  .mat-radio-label-content {
+    font-size: 0.75em;
+  }
+}
+
+input::placeholder,
+.mat-radio-label-content {
+  font: 10px sans-serif;
+}
+.mat-icon,
+.mat-datepicker-toggle {
+  margin: 0.2rem;
+}
+
+.mat-elevation-z8 {
+  overflow: auto;
+}
+.mat-dialog-container {
+  position: relative !important;
+}
+.mat-form-field-flex {
+  background-color: white !important;
+}
+.img {
+  width: 98px;
+  height: 68px;
+  border-radius: 5px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* For Desktop View */
+@media screen and (min-width: 1024px) {
+  .flex-item-6 {
+    width: 45%;
+    margin: 10px;
+  }
+  .flex-item-4 {
+    width: 35%;
+  }
+  .flex-item-5 {
+    width: 60%;
+  }
+  .mat-form-field {
+    margin: 5px !important;
+    width: 200px;
+  }
+}
+
+/* For Tablet View */
+@media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .flex-item-6 {
+    width: 45%;
+    margin: 10px;
+  }
+  .flex-item-4 {
+    width: 45%;
+  }
+  .flex-item-5 {
+    width: 60%;
+  }
+  .mat-form-field {
+    margin: 5px !important;
+    width: 180px;
+  }
+}
+
+/* For Mobile Portrait View */
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  .flex-item-6 {
+    width: 85%;
+    margin: 10px;
+  }
+  .flex-item-4 {
+    width: 85%;
+  }
+  .flex-item-5 {
+    width: 85%;
+  }
+  .mat-form-field {
+    margin: 5px !important;
+    width: 95%;
+  }
+}
+
+/* For Mobile Landscape View */
+@media screen and (max-device-width: 640px) and (orientation: landscape) {
+  .flex-item-6 {
+    width: 85%;
+    margin: 10px;
+  }
+  .flex-item-4 {
+    width: 85%;
+  }
+  .flex-item-5 {
+    width: 85%;
+  }
+  .mat-form-field {
+    margin: 5px !important;
+    width: 95%;
+  }
+}
+
+/* For Mobile Phones Portrait or Landscape View */
+@media screen and (max-device-width: 640px) {
+  .flex-item-6 {
+    width: 85%;
+    margin: 10px;
+  }
+  .flex-item-4 {
+    width: 85%;
+  }
+  .flex-item-5 {
+    width: 85%;
+  }
+  .mat-form-field {
+    margin: 5px !important;
+    width: 95%;
+  }
+}
+
+/* For iPhone 4 Portrait or Landscape View */
+@media screen and (min-device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
+  .flex-item-6 {
+    width: 85%;
+    margin: 10px;
+  }
+  .flex-item-4 {
+    width: 85%;
+  }
+  .flex-item-5 {
+    width: 85%;
+  }
+  .mat-form-field {
+    margin: 5px !important;
+    width: 95%;
+  }
+}
+
+/* For iPhone 5 Portrait or Landscape View */
+@media (device-height: 568px) and (device-width: 320px) and (-webkit-min-device-pixel-ratio: 2) {
+  .flex-item-6 {
+    width: 85%;
+    margin: 10px;
+  }
+  .flex-item-4 {
+    width: 85%;
+  }
+  .flex-item-5 {
+    width: 85%;
+  }
+
+  .mat-form-field {
+    margin: 5px !important;
+    width: 95%;
+  }
+}
+
+/* For iPhone 6 and 6 plus Portrait or Landscape View */
+@media (min-device-height: 667px) and (min-device-width: 375px) and (-webkit-min-device-pixel-ratio: 3) {
+  .flex-item-6 {
+    width: 85%;
+    margin: 10px;
+  }
+  .flex-item-4 {
+    width: 85%;
+  }
+  .flex-item-5 {
+    width: 85%;
+  }
+  .mat-form-field {
+    margin: 5px !important;
+    width: 95%;
+  }
+}

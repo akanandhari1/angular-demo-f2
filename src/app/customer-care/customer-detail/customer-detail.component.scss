@@ -1,0 +1,56 @@
+.content {
+  width: 80%;
+  height: 80%;
+}
+.cdk-overlay-pane {
+  width: 80vw;
+}
+
+// .flex-item {
+//   margin: 5px !important;
+//   width: 150px;
+// }
+
+.bold {
+  font-weight: bold;
+}
+.mat-bottom {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+.row {
+  display: flex;
+  flex-flow: row wrap;
+}
+.col-1 {
+  width: 10%;
+  min-width: 150px;
+  margin: 5px;
+}
+.col-2 {
+  width: 35%;
+  min-width: 150px;
+  margin: 5px;
+}
+.buttons > .col-1 {
+  margin: 5px;
+}
+.buttons > .col-1 > button {
+  width: 150px;
+}
+// .flex-item-4 {
+//   width: 35%;
+// }
+// .flex-item-5 {
+//   width: 60%;
+// }
+.card-size {
+  width: 360px;
+  min-height: 300px;
+  margin: 4px;
+}
+.container-height {
+  height: 350px;
+  overflow: auto;
+}

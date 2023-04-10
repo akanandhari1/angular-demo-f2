@@ -1,0 +1,59 @@
+<h4 mat-dialog-title class="title">Search DC</h4>
+<mat-dialog-content>
+  <mat-card>
+    <div class="flex-container">
+      <mat-form-field class="flex-item">
+        <mat-label>Search By Pincode</mat-label>
+        <input matInput  [(ngModel)]="searchPinCode" />
+        <mat-icon matPrefix> location_on</mat-icon>
+      </mat-form-field>
+      <div class="flex-item">
+        <button mat-raised-button color="primary" (click)="searchPin()">
+          Search
+        </button>
+      </div>
+    </div>
+    <div class="flex-container">
+      <div class="flex-item" style="overflow:auto">
+        <table class="table">
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Number</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>PinCode</th>
+          </tr>
+          <ng-container *ngFor="let dcdetail of dcDetails">
+            <tr>
+              <td>
+                <mat-checkbox
+                  [(ngModel)]="dcdetail.selected"
+                  [color]="'primary'"
+                  (ngModelChange)="selectonlyone(dcdetail)"
+                >
+                </mat-checkbox>
+              </td>
+              <td>{{ dcdetail.name }}</td>
+              <td>{{ dcdetail.phoneNumber }}</td>
+
+              <td>{{ dcdetail.email }}</td>
+              <td>{{ dcdetail.address }}</td>
+              <td>{{ dcdetail.city }}</td>
+              <td>{{ dcdetail.state }}</td>
+              <td>{{ dcdetail.pinCode }}</td>
+            </tr>
+          </ng-container>
+        </table>
+      </div>
+    </div>
+  </mat-card>
+</mat-dialog-content>
+<div mat-dialog-actions align="end" class="float-right">
+  <button mat-raised-button color="primary" (click)="selectDc()">
+    Select DC
+  </button>
+  <button mat-button [mat-dialog-close]>Close</button>
+</div>

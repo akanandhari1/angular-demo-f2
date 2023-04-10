@@ -1,0 +1,28 @@
+<!-- <app-insurance-provider></app-insurance-provider> -->
+<!-- <app-quality-check-home></app-quality-check-home> -->
+<!-- <app-create-register></app-create-register> -->
+<div *ngIf="isLogin === false">
+  <mat-toolbar>
+    <img
+      style=" width: 100px;height: 50px;"
+      src="../../assets/SHC - Final Logo-01.png"
+    />
+    <span class="example-spacer"></span>
+    <span class="customer">
+      <mat-icon>account_box</mat-icon> {{ currentUser.UserName }}</span
+    >
+    <span class="pointer"
+      ><mat-icon
+        (click)="logOut()"
+        #tooltip="matTooltip"
+        matTooltip="Logout"
+        matTooltipPosition="left"
+        >logout</mat-icon
+      ></span
+    >
+  </mat-toolbar>
+</div>
+<router-outlet #o="outlet"></router-outlet>
+<!-- Copyright 2023 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at https://angular.io/license -->

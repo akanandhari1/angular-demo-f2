@@ -1,0 +1,138 @@
+<h4 mat-dialog-title class="title">Book An Appointment</h4>
+<mat-dialog-content>
+  <div class="flex-container">
+    <div class="flex-item">
+      <mat-checkbox [(ngModel)]="appointments.partial" color="primary"
+        >Partial Appointment</mat-checkbox
+      >
+    </div>
+    <div class="flex-item">
+      <ng-container *ngIf="appointments.partial">
+        <button
+          mat-button
+          color="primary"
+          mat-raised-button
+          (click)="addAppointment()"
+        >
+          Add DC
+        </button>
+      </ng-container>
+    </div>
+  </div>
+  <div class="flex-container">
+    <ng-container
+      *ngFor="let appointment of appointments.appointments; let i = index"
+    >
+      <mat-card class="flex-item-2">
+        <div
+          class="flex-container flex-end deleteArea"
+          *ngIf="appointments.appointments.length > 1"
+        >
+          <div class="flex-item" (click)="deleteAppoinment(i)">
+            <mat-icon class="pointer delete"> delete</mat-icon>
+          </div>
+        </div>
+        <div class="flex-container">
+          <mat-form-field class="flex-item">
+            <mat-label>Type Of Visit</mat-label>
+            <mat-icon matPrefix> room </mat-icon>
+            <mat-select [(ngModel)]="appointment.typeOfVisit">
+              <mat-option *ngFor="let visit of typeOfVisit" [value]="visit">
+                {{ visit }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="flex-container">
+          <div class="flex-item">
+            <button
+              mat-button
+              mat-raised-button
+              color="primary"
+              (click)="searchDc(appointment)"
+              *ngIf="!appointment.dcDetails"
+            >
+              Search DC
+            </button>
+            <ng-container *ngIf="appointment.dcDetails">
+              <label>Selected DC</label>
+              <div>
+                {{
+                  appointment.dcDetails.name + ',' + appointment.dcDetails.city
+                }}
+                <mat-icon
+                  class="small-font pointer"
+                  (click)="deleteDc(appointment)"
+                >
+                  close</mat-icon
+                >
+              </div>
+            </ng-container>
+          </div>
+        </div>
+        <div class="flex-container">
+          <mat-form-field class="flex-item">
+            <mat-label>Preferred Date</mat-label>
+            <input
+              matInput
+              [min]="minDate"
+              [max]="maxDate"
+              [(ngModel)]="appointment.PreferredDate"
+              [matDatepicker]="releasedAtPicker"
+            />
+
+            <mat-datepicker-toggle matPrefix [for]="releasedAtPicker">
+            </mat-datepicker-toggle>
+
+            <mat-datepicker #releasedAtPicker> </mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="flex-container">
+          <!-- <mat-form-field class="flex-item">
+            <mat-label>Preferred Time</mat-label>
+            <input
+              type="time"
+              matInput
+              [(ngModel)]="appointment.PreferredTime"
+              placeholder="Please select time..."
+            />
+
+            <mat-icon matPrefix>access_time</mat-icon>
+          </mat-form-field> -->
+          <div class="flex-item">
+            <mat-label>Preferred Time</mat-label>
+
+            <ngx-mat-timepicker-field
+              color="primary"
+              [format]="12"
+              [(ngModel)]="appointment.PreferredTime"
+              [defaultTime]="'12:00 PM'"
+            ></ngx-mat-timepicker-field>
+          </div>
+        </div>
+        <div class="flex-container">
+          <mat-form-field class="flex-item">
+            <mat-label>Lab Tests</mat-label>
+            <mat-icon matPrefix> monitor_heart </mat-icon>
+            <mat-select [(ngModel)]="appointment.test" multiple>
+              <mat-option *ngFor="let test of tests" [value]="test.name">
+                {{ test.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </mat-card>
+    </ng-container>
+  </div>
+</mat-dialog-content>
+<div mat-dialog-actions align="end" class="float-right">
+  <button
+    mat-button
+    mat-raised-button
+    color="primary"
+    (click)="confirmAppointment()"
+  >
+    Confirm Appointment
+  </button>
+  <button mat-button color="primary" [mat-dialog-close]>Close</button>
+</div>

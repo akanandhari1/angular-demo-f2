@@ -1,0 +1,63 @@
+mat-card {
+  max-width: 300px;
+  height: 400px;
+  margin: 2em auto;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+}
+.loginButton  {
+  background-color: #ededed !important;
+  color: black !important;
+}
+.password-link {
+  font: 400 14px / 20px 'Roboto, "Helvetica Neue", sans-serif';
+}
+
+/* mouse over link */
+a:hover {
+  color: black;
+}
+
+/* selected link */
+a:active {
+  color: black;
+}
+
+mat-form-field {
+  display: relative;
+  padding: 0;
+}
+.title-login {
+  color: #4c0899;
+}
+.error {
+  font-size: 10px;
+}
+.label {
+  padding: 5px 0;
+}
+.mat-form-field-appearance-outline .mat-form-field-label {
+  top: 2.4em !important;
+  margin-top: -0.25em;
+}
+mat-card {
+  background-color: whitesmoke;
+}
+// mat-form-field {
+//   background-color: white;
+// }
+.loginButton {
+  background-color: #ededed !important;
+  color: black !important;
+}
+.img {
+  width: 98px;
+  height: 50px;
+  border-radius: 5px;
+  padding: 5px;
+  //background-color: white;
+}
+.mat-error {
+  color: black !important;
+}

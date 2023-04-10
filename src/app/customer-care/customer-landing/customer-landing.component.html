@@ -1,0 +1,19 @@
+<ng-container *ngIf="customerhomescreen">
+  <mat-tab-group mat-align-tabs="end">
+    <mat-tab label="Appointments">
+      <app-i-provider-home
+        [from]="'customer'"
+        (navigatetoDetail)="navigate($event)"
+      >
+      </app-i-provider-home>
+    </mat-tab>
+    <mat-tab label="Create/Register">
+      <app-create-register></app-create-register>
+    </mat-tab>
+  </mat-tab-group>
+</ng-container>
+<ng-container *ngIf="!customerhomescreen">
+  <app-customer-detail
+    (navigatetoDetail)="navigate($event)"
+  ></app-customer-detail>
+</ng-container>

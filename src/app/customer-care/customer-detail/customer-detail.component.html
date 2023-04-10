@@ -1,0 +1,404 @@
+<h4 class="title" style="margin-top:10px">
+  Customer Detail
+  <div style="float:right">
+    <button mat-button (click)="back()" color="primary">
+      <mat-icon style="font-size:18px">arrow_back</mat-icon>
+      Back
+    </button>
+  </div>
+</h4>
+
+<!-- <div class="flex-container">
+    <div class="flex-item-6"> -->
+<div class="flex-container">
+  <mat-card class="flex-item-4">
+    <form [formGroup]="form" (ngSubmit)="onFormSubmit()" autocomplete="off">
+      <div class="flex-container">
+        <h5 class="title m-0">Insurance Detail</h5>
+        <div style="margin-left: auto ">
+          <mat-icon class="pointer" (click)="changeEdit()">
+            edit_note
+          </mat-icon>
+        </div>
+      </div>
+
+      <div class="flex-container">
+        <mat-form-field class="flex-item">
+          <mat-label>TPA/Request ID</mat-label>
+          <input matInput disabled />
+          <mat-icon matPrefix> medical_information_outlined</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>Insurance Provider</mat-label>
+          <mat-icon matPrefix>perm_identity</mat-icon>
+          <mat-select formControlName="InsuranceProvider">
+            <mat-option
+              *ngFor="let provider of providerList"
+              [value]="provider.id"
+            >
+              {{ provider.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            ><span
+              *ngIf="
+                form.controls.InsuranceProvider.touched &&
+                form.controls.InsuranceProvider.invalid
+              "
+            >
+              Please select a insurance provider</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>Policy ID</mat-label>
+          <input matInput formControlName="PolicyNo" />
+          <mat-icon matPrefix>policy_outlined</mat-icon>
+          <mat-error
+            ><span
+              *ngIf="
+                form.controls.PolicyNo.touched && form.controls.PolicyNo.invalid
+              "
+            >
+              Please enter Policy ID</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>Member ID</mat-label>
+          <input matInput formControlName="MemberId" />
+          <mat-icon matPrefix>card_membership_outlined </mat-icon>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>Agent Mobile number</mat-label>
+          <input
+            matInput
+            formControlName="AgentName"
+            type="number"
+            onKeyPress="if(this.value.length==10) return false;"
+          />
+          <mat-icon matPrefix> person_pin</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>Agent Code</mat-label>
+          <input matInput formControlName="AgentCode" />
+          <mat-icon matPrefix> confirmation_number</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>Agent Number</mat-label>
+          <input
+            matInput
+            [disabled]="true"
+            formControlName="AgentNumber"
+            pattern="\d*"
+            maxlength="10"
+          />
+          <mat-icon matPrefix> memory</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <h5 class="title">Customer Detail</h5>
+      <div class="flex-container">
+        <mat-form-field class="flex-item">
+          <mat-label>Customer Name</mat-label>
+          <input matInput formControlName="CustomerName" />
+          <mat-icon matPrefix> person_pin</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>Gender</mat-label>
+          <mat-select [disabled]="disableEdit" formControlName="Gender">
+            <mat-option *ngFor="let state of genderList" [value]="state">
+              {{ state }}
+            </mat-option>
+          </mat-select>
+          <mat-icon matPrefix> supervisor_account</mat-icon>
+          <mat-error
+            ><span
+              *ngIf="
+                form.controls.Gender.touched && form.controls.Gender.invalid
+              "
+            >
+              Please select a Gender</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>DOB</mat-label>
+
+          <input
+            matInput
+            formControlName="DOB"
+            [matDatepicker]="releasedAtPicker"
+          />
+
+          <mat-datepicker-toggle matPrefix [for]="releasedAtPicker">
+          </mat-datepicker-toggle>
+
+          <mat-datepicker #releasedAtPicker [disabled]="disableEdit">
+          </mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label> Customer Mobile number</mat-label>
+          <input
+            matInput
+            formControlName="CustomerNo"
+            type="number"
+            required
+            onKeyPress="if(this.value.length==10) return false;"
+          />
+          <mat-icon matPrefix>call</mat-icon>
+          <mat-error
+            ><span
+              *ngIf="
+                form.controls.CustomerNo.touched &&
+                form.controls.CustomerNo.invalid
+              "
+            >
+              Please enter mobile number</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>City</mat-label>
+          <input matInput formControlName="City" required />
+          <mat-icon matPrefix> location_city</mat-icon>
+          <mat-error
+            ><span
+              *ngIf="form.controls.City.touched && form.controls.City.invalid"
+            >
+              Please enter city</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>State</mat-label>
+          <mat-icon matPrefix>location_searching_outlined</mat-icon>
+          <mat-select formControlName="State" required>
+            <mat-option *ngFor="let state of stateList" [value]="state">
+              {{ state }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            ><span
+              *ngIf="form.controls.State.touched && form.controls.State.invalid"
+            >
+              Please select a state</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>Pincode</mat-label>
+          <input
+            matInput
+            formControlName="Pincode"
+            pattern="\d*"
+            maxlength="6"
+            required
+          />
+          <mat-icon matPrefix> location_on</mat-icon>
+          <mat-error
+            ><span
+              *ngIf="
+                form.controls.Pincode.touched && form.controls.Pincode.invalid
+              "
+            >
+              Please enter pincode</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>LabTests</mat-label>
+          <mat-select
+            placeholder="LabTests"
+            formControlName="LabTests"
+            [(value)]="SelectedLabTests"
+            multiple
+          >
+            <mat-option *ngFor="let test of LabTests" [value]="test">{{
+              test.name
+            }}</mat-option>
+          </mat-select>
+          <mat-error
+            ><span
+              *ngIf="
+                form.controls.LabTests.touched && form.controls.LabTests.invalid
+              "
+            >
+              Please select a test</span
+            >
+          </mat-error>
+          <mat-icon matPrefix> find_in_page</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div class="flex-container" *ngIf="!disableEdit">
+        <div class="bottom-pane">
+          <button mat-raised-button color="primary">Save</button>
+          <!-- <button mat-raised-button extended (click)="reset()">Clear</button> -->
+        </div>
+      </div>
+    </form>
+  </mat-card>
+
+  <mat-card class="flex-item-5">
+    <div class="flex-container flex-end">
+      <div class="flex-item" style="line-height: 39px;" *ngIf="!showAppoinment">
+        Status :
+        <span style="line-height: 39px;color:blue">{{
+          appointments.status
+        }}</span>
+      </div>
+      <div class="flex-item">
+        <button
+          mat-raised-button
+          color="primary"
+          *ngIf="showAppoinment"
+          (click)="showbookAppoinment()"
+        >
+          Book An Appointment
+        </button>
+      </div>
+      <div class="flex-item">
+        <button mat-button color="primary" (click)="noResponse()">
+          No Response
+        </button>
+      </div>
+    </div>
+    <ng-container *ngIf="appointments">
+      <div class="flex-container container-height">
+        <ng-container *ngFor="let appointment of appointments.appointments">
+          <mat-card class="card-size">
+            <div class="flex-container">
+              <div class="flex-item">
+                <div class="row">
+                  <div class="col-1 bold">Type Of Visit</div>
+                  <div class="col-2">{{ appointment.typeOfVisit }}</div>
+                </div>
+                <div class="row">
+                  <div class="col-1 bold">DC Details</div>
+                  <div class="col-2">
+                    <ng-container *ngIf="appointment.dcDetails">
+                      <span class="bold">
+                        {{ appointment.dcDetails.name }}
+                      </span>
+                    </ng-container>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-1 bold">Contact Number</div>
+                  <div class="col-2">
+                    <ng-container *ngIf="appointment.dcDetails">
+                      <span class="bold">
+                        {{ appointment.dcDetails.phoneNumber }}
+                      </span>
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-1 bold">DC Email</div>
+                  <div class="col-2">
+                    <ng-container *ngIf="appointment.dcDetails">
+                      <span class="bold">
+                        {{ appointment.dcDetails.email }}
+                      </span>
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-1 bold">DC Address</div>
+                  <div class="col-2">
+                    <ng-container *ngIf="appointment.dcDetails">
+                      {{
+                        appointment.dcDetails.address +
+                          ', ' +
+                          appointment.dcDetails.city +
+                          ', ' +
+                          appointment.dcDetails.state +
+                          ',' +
+                          appointment.dcDetails.pinCode
+                      }}
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-1 bold">Appointment Date</div>
+                  <div class="col-2">
+                    {{ appointment.PreferredDate | date: 'dd/MM/yyyy' }}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-1 bold">Appointment Time</div>
+                  <div class="col-2">
+                    {{ appointment.PreferredTime }}
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-1 bold">Tests</div>
+                  <div class="col-2">{{ appointment.test.join(',') }}</div>
+                </div>
+              </div>
+            </div>
+          </mat-card>
+        </ng-container>
+      </div>
+      <div class="flex-container">
+        <div class="flex-item">
+          <div class="row buttons">
+            <div class="col-1">
+              <button
+                mat-raised-button
+                color="primary"
+                (click)="rebookAppoinment()"
+              >
+                ReAppointment
+              </button>
+            </div>
+
+            <div class="col-1">
+              <button mat-raised-button color="primary" (click)="show()">
+                Show
+              </button>
+            </div>
+
+            <div class="col-1">
+              <button mat-raised-button color="primary" (click)="noShow()">
+                No Show
+              </button>
+            </div>
+
+            <div class="col-1">
+              <button
+                mat-raised-button
+                color="primary"
+                (click)="partialyCompleted()"
+              >
+                Partially Completed
+              </button>
+            </div>
+
+            <div class="col-1">
+              <button
+                mat-raised-button
+                color="primary"
+                (click)="reportPending()"
+              >
+                Report Pending
+              </button>
+            </div>
+
+            <div class="col-1">
+              <button mat-raised-button color="primary" (click)="QcProcess()">
+                Qc in Progress
+              </button>
+            </div>
+
+            <div class="col-1">
+              <button mat-raised-button color="primary">Upload Report</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </mat-card>
+</div>

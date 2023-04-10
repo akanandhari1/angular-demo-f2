@@ -1,0 +1,223 @@
+<mat-tab-group mat-align-tabs="end">
+  <mat-tab label="Home">
+    <mat-card>
+      <h4>Search</h4>
+      <section [formGroup]="form">
+        <div class="flex-container">
+          <mat-form-field class="flex-item">
+            <mat-label>TPA/Request ID</mat-label>
+            <input matInput formControlName="TPARequestId" />
+            <mat-icon matPrefix> medical_information_outlined</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field class="flex-item">
+            <mat-label>Policy ID</mat-label>
+            <input matInput formControlName="PolicyId" />
+            <mat-icon matPrefix>policy_outlined</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field class="flex-item">
+            <mat-label>Member ID</mat-label>
+            <input matInput formControlName="MemberId" />
+            <mat-icon matPrefix>card_membership_outlined </mat-icon>
+          </mat-form-field>
+
+          <mat-form-field class="flex-item">
+            <mat-label>Customer Name</mat-label>
+            <input matInput formControlName="CustomerName" />
+            <mat-icon matPrefix>person_search_outlined</mat-icon>
+          </mat-form-field>
+
+          <mat-form-field class="flex-item">
+            <mat-label> Customer Mobile Number</mat-label>
+            <input matInput formControlName="MobileNumber" maxlength="10" />
+            <mat-icon matPrefix>call</mat-icon>
+          </mat-form-field>
+          <mat-form-field class="flex-item">
+            <mat-label>Order ID</mat-label>
+            <input matInput formControlName="OrderId" />
+            <mat-icon matPrefix>view_list_outlined</mat-icon>
+          </mat-form-field>
+          <mat-form-field class="flex-item-big">
+            <mat-label>Status</mat-label>
+            <mat-icon matPrefix>monitor_heart_outlined </mat-icon>
+            <mat-select formControlName="Status">
+              <mat-option *ngFor="let status of statusList" [value]="status.id">
+                {{ status.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="flex-item-big">
+            <mat-label>Insurance Provider</mat-label>
+            <mat-icon matPrefix>perm_identity</mat-icon>
+            <mat-select formControlName="InsuranceProvider">
+              <mat-option
+                *ngFor="let provider of providerList"
+                [value]="provider.id"
+              >
+                {{ provider.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="flex-item-big">
+            <mat-label>State</mat-label>
+            <mat-icon matPrefix>location_searching_outlined</mat-icon>
+            <mat-select formControlName="State">
+              <mat-option *ngFor="let state of stateList" [value]="state">
+                {{ state }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="flex-item" style="width:200px">
+            <label id="example-radio-group-label" class="radio-label"
+              >Date of
+            </label>
+            <br />
+
+            <mat-radio-group
+              aria-labelledby="example-radio-group-label"
+              formControlName="DateOf"
+            >
+              <mat-radio-button value="1">Appointment </mat-radio-button>
+              <mat-radio-button value="2">Creation</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <mat-form-field class="flex-item">
+            <mat-label>Enter Date Between</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input
+                matStartDate
+                placeholder="Start date"
+                formControlName="StartDate"
+              />
+              <input
+                matEndDate
+                placeholder="End date"
+                formControlName="EndDate"
+              />
+            </mat-date-range-input>
+            <mat-hint>DD/MM/YYYY – DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle
+              matPrefix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+        </div>
+        <div class="flex-container">
+          <div class="bottom-pane">
+            <button mat-raised-button color="primary">Search</button>
+            <button mat-raised-button extended (click)="reset()">Clear</button>
+          </div>
+        </div>
+      </section>
+    </mat-card>
+    <mat-card>
+      <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+          <!-- ID Column -->
+          <ng-container matColumnDef="TPARequestId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              TPA/Request ID
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.TPARequestId }}</td>
+          </ng-container>
+          <ng-container matColumnDef="PolicyId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Policy ID</th>
+            <td mat-cell *matCellDef="let row">{{ row.PolicyId }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="MemberId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Member ID</th>
+            <td mat-cell *matCellDef="let row">{{ row.MemberId }}</td>
+          </ng-container>
+          <ng-container matColumnDef="CustomerName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Customer Name
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.CustomerName }}</td>
+          </ng-container>
+          <ng-container matColumnDef="CustomerNo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Customer Mobile Number
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.CustomerNo }}</td>
+          </ng-container>
+
+          <!-- <ng-container matColumnDef="OrderId">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Order ID</th>
+            <td mat-cell *matCellDef="let row">{{ row.OrderId }}</td>
+          </ng-container> -->
+
+          /
+          <ng-container matColumnDef="InsuranceProvider">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Insurance Provider
+            </th>
+            <td mat-cell *matCellDef="let row">{{ row.InsuranceProvider }}</td>
+          </ng-container>
+          <!-- <ng-container matColumnDef="DateOfAppointment">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Date Of Appointment
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.DateOfAppointment | date: 'dd-MM-yyyy hh:mm' }}
+            </td>
+          </ng-container> -->
+          <!-- <ng-container matColumnDef="DateOfCreation">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Date Of Creation
+            </th>
+            <td mat-cell *matCellDef="let row">
+              {{ row.DateOfCreation | date: 'dd-MM-yyyy hh:mm' }}
+            </td>
+          </ng-container> -->
+          <ng-container matColumnDef="Reports">
+            <th mat-header-cell *matHeaderCellDef>Reports</th>
+            <td mat-cell *matCellDef="let row">
+              <mat-icon
+                matPrefix
+                class="pointer"
+                #tooltip="matTooltip"
+                matTooltip="Download File"
+                matTooltipPosition="left"
+                (click)="downloadExcel()"
+                >sim_card_download</mat-icon
+              >
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Approve">
+            <th mat-header-cell *matHeaderCellDef>Approve</th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-icon-button (click)="approve()">
+                <mat-icon class="approve-icon pointer">done_all </mat-icon>
+              </button>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="Reject">
+            <th mat-header-cell *matHeaderCellDef>Reject</th>
+            <td mat-cell *matCellDef="let row">
+              <button mat-icon-button (click)="reject()">
+                <mat-icon class="reject-icon pointer">remove_done </mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+          <!-- Row shown when there is no matching data. -->
+          <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="4">No data matching the filter</td>
+          </tr>
+        </table>
+
+        <mat-paginator
+          [pageSizeOptions]="[5, 10, 25, 100]"
+          aria-label="Select page of dataSource.data"
+        ></mat-paginator>
+      </div>
+    </mat-card>
+  </mat-tab>
+</mat-tab-group>

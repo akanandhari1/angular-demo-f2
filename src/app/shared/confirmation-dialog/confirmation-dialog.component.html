@@ -1,0 +1,29 @@
+<h4 mat-dialog-title color="primary" class="title">{{ data.title }}</h4>
+<div mat-dialog-content>
+  <div innerHTML="{{ data.message }}"></div>
+  <ng-container *ngIf="data.hasComment">
+    <div class="m-2">
+      <mat-form-field style="width:100%">
+        <mat-label>Comments</mat-label>
+        <textarea
+          matInput
+          [(ngModel)]="comment"
+          rows="3"
+          maxlength="254"
+        ></textarea>
+      </mat-form-field>
+    </div>
+  </ng-container>
+</div>
+<div mat-dialog-actions align="end" class="float-right">
+  <button mat-button (click)="decline()">{{ data.btnCancelText }}</button>
+  <button
+    mat-button
+    mat-dialog-close
+    color="primary"
+    [disabled]="data.hasComment && comment == null"
+    cdkFocusInitial
+  >
+    {{ data.btnOkText }}
+  </button>
+</div>

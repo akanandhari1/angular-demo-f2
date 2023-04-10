@@ -1,0 +1,64 @@
+<mat-card>
+  <div class="space"></div>
+  <img class="img" src="../../assets/SHC - Final Logo-01.png" />
+  <form [formGroup]="form" (ngSubmit)="onFormSubmit()" autocomplete="off">
+    <!-- <h2 class="title-login">LOGIN</h2> -->
+    <div class="space"></div>
+    <div class="space"></div>
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label class="label">User Name</mat-label>
+        <input
+          matInput
+          placeholder="Enter username"
+          formControlName="UserName"
+          required
+        />
+        <!-- <mat-icon matSufix>perm_identity</mat-icon> -->
+        <mat-error> Please provide a valid User name </mat-error>
+      </mat-form-field>
+      <div class="space"></div>
+      <mat-form-field appearance="fill">
+        <mat-label class="label">Password</mat-label>
+        <!-- <mat-icon matPrefix>lock</mat-icon> -->
+
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          placeholder="Enter password"
+          formControlName="Password"
+          required
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+        <mat-error> Please provide a valid password </mat-error>
+      </mat-form-field>
+    </div>
+
+    <mat-error class="error"
+      ><ng-container *ngIf="IsInvalidCredentials === true">
+        Please provide a valid username and password
+      </ng-container>
+    </mat-error>
+    <div class="space"></div>
+    <a routerLink="/login" class="password-link">Forgot Password?</a>
+
+    <div class="space"></div>
+
+    <button
+      mat-raised-button
+      [disabled]="!form.valid"
+      class="loginButton pointer"
+    >
+      Login
+    </button>
+  </form>
+  <div class="space"></div>
+</mat-card>

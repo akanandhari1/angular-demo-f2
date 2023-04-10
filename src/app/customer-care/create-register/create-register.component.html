@@ -1,0 +1,223 @@
+<mat-card>
+  <h4 class="title">CREATE</h4>
+  <section>
+    <form [formGroup]="form" (ngSubmit)="onFormSubmit()" autocomplete="off">
+      <div class="flex-container">
+        <mat-form-field class="flex-item">
+          <mat-label>Insurance Provider</mat-label>
+          <mat-icon matPrefix>perm_identity</mat-icon>
+          <mat-select formControlName="InsuranceProvider">
+            <mat-option
+              *ngFor="let provider of providerList"
+              [value]="provider.id"
+            >
+              {{ provider.name }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            ><span
+              *ngIf="
+                form.controls.InsuranceProvider.touched &&
+                form.controls.InsuranceProvider.invalid
+              "
+            >
+              Please select a insurance provider</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>Policy ID</mat-label>
+          <input matInput formControlName="PolicyNo" />
+          <mat-icon matPrefix>policy_outlined</mat-icon>
+          <mat-error
+            ><span
+              *ngIf="
+                form.controls.PolicyNo.touched && form.controls.PolicyNo.invalid
+              "
+            >
+              Please enter Policy ID</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>Member ID</mat-label>
+          <input matInput formControlName="MemberId" />
+          <mat-icon matPrefix>card_membership_outlined </mat-icon>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>Agent Name</mat-label>
+          <input matInput formControlName="AgentName" />
+          <mat-icon matPrefix> person_pin</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>Agent Code</mat-label>
+          <input matInput formControlName="AgentCode" />
+          <mat-icon matPrefix> confirmation_number</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>Agent Mobile Number</mat-label>
+          <input
+            matInput
+            formControlName="AgentNo"
+            type="number"
+            onKeyPress="if(this.value.length==10) return false;"
+          />
+          <mat-icon matPrefix>call</mat-icon>
+          <mat-error
+            ><span
+              *ngIf="
+                form.controls.AgentNo.touched && form.controls.AgentNo.invalid
+              "
+            >
+              Please enter a valid mobile number</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>Customer Name</mat-label>
+          <input matInput formControlName="CustomerName" />
+          <mat-icon matPrefix> person_pin</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>Gender</mat-label>
+          <mat-select formControlName="Gender">
+            <mat-option *ngFor="let state of genderList" [value]="state">
+              {{ state }}
+            </mat-option>
+          </mat-select>
+          <mat-icon matPrefix> supervisor_account</mat-icon>
+          <mat-error
+            ><span
+              *ngIf="
+                form.controls.Gender.touched && form.controls.Gender.invalid
+              "
+            >
+              Please select a Gender</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>Date of Birth</mat-label>
+
+          <input
+            matInput
+            formControlName="DOB"
+            [matDatepicker]="releasedAtPicker"
+          />
+
+          <mat-datepicker-toggle matPrefix [for]="releasedAtPicker">
+          </mat-datepicker-toggle>
+
+          <mat-datepicker #releasedAtPicker> </mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label> Customer Mobile number</mat-label>
+
+          <input
+            matInput
+            formControlName="CutomerNo"
+            type="number"
+            required
+            onKeyPress="if(this.value.length==10) return false;"
+          />
+          <mat-icon matPrefix>call</mat-icon>
+          <mat-error
+            ><span
+              *ngIf="
+                form.controls.CutomerNo.touched &&
+                form.controls.CutomerNo.invalid
+              "
+            >
+              Please enter a valid mobile number</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>City</mat-label>
+          <input matInput formControlName="city" required />
+          <mat-icon matPrefix> location_city</mat-icon>
+          <mat-error
+            ><span
+              *ngIf="form.controls.city.touched && form.controls.city.invalid"
+            >
+              Please enter city</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="flex-item-big">
+          <mat-label>State</mat-label>
+          <mat-icon matPrefix>location_searching</mat-icon>
+          <mat-select formControlName="State" required>
+            <mat-option *ngFor="let state of stateList" [value]="state">
+              {{ state }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            ><span
+              *ngIf="form.controls.State.touched && form.controls.State.invalid"
+            >
+              Please select a state</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="flex-item">
+          <mat-label>Pincode</mat-label>
+          <input
+            matInput
+            type="number"
+            formControlName="Pincode"
+            onKeyPress="if(this.value.length==6) return false;"
+            required
+          />
+          <mat-icon matPrefix> location_on</mat-icon>
+          <mat-error
+            ><span
+              *ngIf="
+                form.controls.Pincode.touched && form.controls.Pincode.invalid
+              "
+            >
+              Please enter pincode</span
+            >
+          </mat-error>
+        </mat-form-field>
+        <!-- <app-select
+          [data]="data$"
+          [value]="select.value"
+          (changeValue)="valueChanged($event)"
+          (changeSearch)="searchChanged($event)"
+        >
+        </app-select> -->
+        <mat-form-field class="flex-item">
+          <mat-label>Lab Tests</mat-label>
+
+          <mat-select
+            placeholder="LabTests"
+            formControlName="LabTests"
+            [(value)]="SelectedLabTests"
+            multiple
+          >
+            <mat-option *ngFor="let test of LabTests" [value]="test">{{
+              test.name
+            }}</mat-option>
+          </mat-select>
+          <mat-error
+            ><span
+              *ngIf="
+                form.controls.LabTests.touched && form.controls.LabTests.invalid
+              "
+            >
+              Please select a test</span
+            >
+          </mat-error>
+          <mat-icon matPrefix> find_in_page</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="flex-container">
+        <div class="bottom-pane">
+          <button mat-raised-button color="primary">Submit</button>
+          <button mat-raised-button extended (click)="reset()">Reset</button>
+        </div>
+      </div>
+    </form>
+  </section>
+</mat-card>
