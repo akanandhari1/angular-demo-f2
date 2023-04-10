@@ -31,7 +31,7 @@ import { RoResponseComponent } from './customer-care/ro-response/ro-response.com
 import { ProgressComponent } from './insurance-provider/insurance-provider-list/progress/progress.component';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { SelectComponent } from './shared/select/select.component';
-import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
+//import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 
 @NgModule({
   declarations: [
@@ -68,7 +68,7 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
     FlexLayoutModule,
     NgxFileDragDropModule,
 
-    NgxMatTimepickerModule,
+    //  NgxMatTimepickerModule,
   ],
   providers: [
     ConfirmationDialogService,
