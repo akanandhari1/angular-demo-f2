@@ -19,7 +19,7 @@ import { DeleteConfirmComponent } from './insurance-provider/delete-confirm/dele
 import { QualityCheckHomeComponent } from './QC/quality-check-home/quality-check-home.component';
 import { CreateRegisterComponent } from './customer-care/create-register/create-register.component';
 import { CustomerLandingComponent } from './customer-care/customer-landing/customer-landing.component';
-import { NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AppRouterModule } from './router-module/router-module.module';
 import { CustomerDetailComponent } from './customer-care/customer-detail/customer-detail.component';
 import { LoginComponent } from './login/login.component';
@@ -67,7 +67,7 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
     ReactiveFormsModule,
     FlexLayoutModule,
     NgxFileDragDropModule,
-    NgbTimepickerModule,
+
     NgxMatTimepickerModule,
   ],
   providers: [
